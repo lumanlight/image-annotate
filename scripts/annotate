@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# ainotate 封装 —— 本脚本位于 <skill>/scripts/，venv 在同级 <skill>/venv/
+# 中文标签用 Noto Sans CJK 简体（自动探测常见路径，找不到就交给 ainotate 自行回退）
+# 输出目录跟随调用者：$AINOTATE_OUTPUT_DIR > $PWD/image-annotate-out > /dev/shm/... > <skill>/out
+set -euo pipefail
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # = skill 目录
+export PYTHONDONTWRITEBYTECODE=1
+
+# ---- 中文字体自动探测（不同发行版路径不同）----
+if [ -z "${AINOTATE_FONT:-}" ]; then
+  for cand in \
+    /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc \
+    /usr/share/fonts/opentype/noto/NotoSansCJK.ttc \
+    /usr/share/fonts/noto-cjk/NotoSansCJK-Bold.ttc \
+    /usr/share/fonts/truetype/noto/NotoSansCJK-Bold.ttc \
+    /usr/share/fonts/opentype/noto/NotoSansCJKsc-Regular.otf \
+    /usr/share/fonts/truetype/wqy/wqy-zenhei.ttc ; do
+    if [ -f "$cand" ]; then export AINOTATE_FONT="$cand:2"; break; fi
+  done
+fi
+
+if [ -z "${AINOTATE_OUTPUT_DIR:-}" ]; then
+  for cand in "$PWD/image-annotate-out" "${TMPDIR:-/dev/shm}/image-annotate-out" "$here/out"; do
+    if mkdir -p "$cand" 2>/dev/null; then export AINOTATE_OUTPUT_DIR="$cand"; break; fi
+  done
+fi
+exec "$here/venv/bin/ainotate" "$@"
