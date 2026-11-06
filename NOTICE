@@ -1,0 +1,17 @@
+# Third-party notices
+
+本仓库的自研部分（`scripts/`、`references/`、`setup.sh`、`README.md`）以 MIT 许可发布，
+见 [LICENSE](LICENSE)。
+
+但本技能**依赖**以下第三方包，它们各自保留原有许可：
+
+| 依赖 | 版本 | 许可 | 用途 |
+|---|---|---|---|
+| [ainotate](https://pypi.org/project/ainotate/) | 0.1.9 | **AGPL-3.0** | 精确标注渲染（数字步骤、圈框、箭头、打码） |
+| [rough](https://pypi.org/project/rough/) | 1.6 | MIT | rough.js 的 Python 移植，手绘涂描风格 |
+| [cairosvg](https://pypi.org/project/cairosvg/) | 2.9.1 | LGPL-3.0 | SVG → PNG 渲染 |
+
+> ⚠️ **ainotate 是 AGPL-3.0**。将本技能集成进**闭源**产品或对外分发时，
+> 请先自行确认 AGPL 的合规义务（包括是否需要提供完整源码）。
+
+系统依赖：`libcairo2`（cairosvg 渲染必需）、`fonts-noto-cjk`（中文字体）。
