@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# 手绘渲染入口 —— 本脚本位于 <skill>/scripts/，venv 在同级 <skill>/venv/
+# 用法: sketch scene.json out.png
+set -euo pipefail
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # = skill 目录
+export PYTHONDONTWRITEBYTECODE=1
+exec "$here/venv/bin/python" "$here/scripts/sketch_render.py" "$@"
