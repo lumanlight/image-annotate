@@ -1,0 +1,4 @@
+# 技能自包含依赖（Python 3.10+）。换机器后在新机器上执行 setup.sh 即可。
+ainotate==0.1.9
+rough==1.6
+cairosvg==2.9.1
