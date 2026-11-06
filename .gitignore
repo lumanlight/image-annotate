@@ -1,0 +1,12 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# 输出产物
+image-annotate-out/
+out/
+*.tgz
+
+# 日志
+*.log
