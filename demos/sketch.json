@@ -1,0 +1,52 @@
+{
+ "bg_image": "app-mock.png",
+ "items": [
+  {
+   "type": "circle",
+   "x": 620,
+   "y": 160,
+   "d": 620,
+   "stroke": "red",
+   "strokeWidth": 4,
+   "roughness": 2.2
+  },
+  {
+   "type": "line",
+   "x1": 320,
+   "y1": 300,
+   "x2": 470,
+   "y2": 250,
+   "stroke": "green",
+   "strokeWidth": 4,
+   "roughness": 2
+  },
+  {
+   "type": "polygon",
+   "points": [
+    [
+     470,
+     250
+    ],
+    [
+     430,
+     240
+    ],
+    [
+     448,
+     270
+    ]
+   ],
+   "stroke": "green",
+   "fill": "green",
+   "roughness": 1.5
+  },
+  {
+   "type": "text",
+   "x": 120,
+   "y": 560,
+   "text": "手绘圈注 · 涂描感",
+   "size": 30,
+   "color": "#c92a2a"
+  }
+ ]
+}
